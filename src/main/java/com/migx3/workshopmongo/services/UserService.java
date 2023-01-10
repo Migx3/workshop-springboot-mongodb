@@ -39,11 +39,11 @@ public class UserService {
         repository.deleteById(id);
     }
 
-    public User update(User user) {
+    public void update(User user) {
         User newUser = findById(user.getId());
 
         updateData(user, newUser);
-        return repository.save(newUser);
+        repository.save(newUser);
     }
 
     private void updateData(User user, User newUser) {
