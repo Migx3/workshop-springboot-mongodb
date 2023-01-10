@@ -1,5 +1,6 @@
 package com.migx3.workshopmongo.resources;
 
+import com.migx3.workshopmongo.domain.Post;
 import com.migx3.workshopmongo.domain.User;
 import com.migx3.workshopmongo.dto.UserDTO;
 import com.migx3.workshopmongo.services.UserService;
@@ -56,5 +57,13 @@ public class UserResource {
     public ResponseEntity<Void> delete(@PathVariable String id) {
         service.delete(id);
         return ResponseEntity.noContent().build();
+    }
+
+    @RequestMapping(value = "/{id}/posts", method = RequestMethod.GET)
+    public ResponseEntity<List<Post>> findPosts(@PathVariable String id) {
+
+        User user = service.findById(id);
+
+        return ResponseEntity.ok().body(user.getPosts());
     }
 }
