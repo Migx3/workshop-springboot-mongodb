@@ -15,7 +15,7 @@ import java.util.Arrays;
 import java.util.TimeZone;
 
 @Configuration
-public class Instantion implements CommandLineRunner {
+public class Instantiation implements CommandLineRunner {
 
     @Autowired
     private UserRepository userRepository;
@@ -44,8 +44,10 @@ public class Instantion implements CommandLineRunner {
         CommentDTO comment1 = new CommentDTO("Boa viagem mano!", dateFormat.parse("21/03/2018"), new AuthorDTO(alex));
         CommentDTO comment2 = new CommentDTO("Aproveite!", dateFormat.parse("22/03/2018"), new AuthorDTO(bob));
         CommentDTO comment3 = new CommentDTO("Tenha um ótimo dia!", dateFormat.parse("23/03/2018"), new AuthorDTO(alex));
+        CommentDTO comment4 = new CommentDTO("Que ótimo!", dateFormat.parse("23/03/2018"), new AuthorDTO(alex));
 
         post1.getComments().addAll(Arrays.asList(comment1, comment2, comment3));
+        post2.getComments().add(comment4);
 
         postRepository.saveAll(Arrays.asList(post1, post2));
 
